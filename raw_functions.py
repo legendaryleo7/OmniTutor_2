@@ -34,7 +34,7 @@ def get_keywords(file_paths): #这里的可以加一个条件判断，输入语�
     download_nltk()
     keywords_list = []
     for file_path in file_paths:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding="UTF-8") as file:
             data = file.read()
             # tokenize
             words = word_tokenize(data)
@@ -129,7 +129,7 @@ def chunkstring(string, length):
 def constructVDB(file_paths, collection_name='user_upload', embedding_function=SentenceTransformerEmbeddingFunction(model_name="paraphrase-mpnet-base-v2")):
     texts = ""
     for filename in file_paths:
-        with open(filename, 'r') as f:
+        with open(filename, 'r', encoding="UTF-8") as f:
             content = f.read()
             texts += content
     chunks = chunkstring(texts, 1000) #1000 characters per chunk

@@ -68,7 +68,7 @@ def app():
 
     # must divide btn_start and btn_next
     if btn_start:
-        if api_key !="" and api_key.startswith("sk-") and len(api_key) == 51 and added_files:
+        if api_key !="" and api_key.startswith("sk-") and len(api_key) >= 51 and added_files:
             if ss.start_learning == 0:
                 ss.main_page_displayed = False
                 ss.chatInput_displayed = True
@@ -106,7 +106,7 @@ def app():
                     
             elif ss.start_learning == 1:
                 display_warning_started()
-        elif len(ss["OPENAI_API_KEY"]) != 51 and added_files:
+        elif len(ss["OPENAI_API_KEY"]) < 51 and added_files:
             # here, need to clear the screen
             display_warning_api_key()
         elif not added_files:
